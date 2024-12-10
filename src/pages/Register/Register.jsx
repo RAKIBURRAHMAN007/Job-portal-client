@@ -1,16 +1,34 @@
 import Lottie from 'lottie-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import registerLottie from '../../assets/lottie/register.json'
+import AuthContext from '../../context/AuthContext/AuthContext';
 const Register = () => {
+    const { user, createUser } = useContext(AuthContext);
+
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password);
+        console.log(email, password);
 
         //password validation
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+        if (!passwordRegex.test(password)) {
+            alert('atleast one number and one capital later and 6 in length')
+            return;
+
+        }
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user)
+
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+
 
     }
     return (

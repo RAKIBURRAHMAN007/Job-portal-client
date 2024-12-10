@@ -1,14 +1,24 @@
 import Lottie from 'lottie-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import registerl from '../../assets/lottie/loginlottiee.json'
+import AuthContext from '../../context/AuthContext/AuthContext';
 const SignIn = () => {
+    const { signInUser } = useContext(AuthContext);
 
-    const handleSignIn = e=>{
+    const handleSignIn = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+        signInUser(email, password)
+            .then(result => {
+                console.log('sign in' ,result.user)
+
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     };
     return (
         <div className='pb-10'>
@@ -28,7 +38,7 @@ const SignIn = () => {
                         </div>
 
                         <form onSubmit={handleSignIn} className="card-body">
-                           
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-xl font-mono">Email</span>
@@ -41,7 +51,7 @@ const SignIn = () => {
                                     required
                                 />
                             </div>
-                           
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text font-mono text-xl">Password</span>

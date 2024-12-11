@@ -56,8 +56,8 @@ const NavBar = () => {
             <div className='navbar-end gap-1'>
                 <>
                     {
-                        user ? <> <button onClick={signOutUser} className='btn'>Sign Out</button> </> : <>  <Link to={`signin`} className="btn">Sign In</Link>
-                            <Link to={'register'} className="btn">Register</Link></>
+                        user ? <> <button onClick={signOutUser} className='btn'>Sign Out</button> </> : <>  <Link to={`signin`} className="btn w-13 md:w-28 text-xs md:text-base">Sign In</Link>
+                            <Link  to={'register'} className="btn w-16 md:text-base text-xs md:w-32">Register</Link></>
 
                     }
                 </>

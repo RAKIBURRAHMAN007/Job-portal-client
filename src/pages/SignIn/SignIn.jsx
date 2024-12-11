@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import registerl from '../../assets/lottie/loginlottiee.json'
 import AuthContext from '../../context/AuthContext/AuthContext';
 const SignIn = () => {
-    const { signInUser } = useContext(AuthContext);
+    const { signInUser  } = useContext(AuthContext);
+ 
 
     const handleSignIn = e => {
         e.preventDefault();
@@ -68,14 +69,14 @@ const SignIn = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary bg-[#9660ea] text-white text-xl font-mono">
-                                    Register
+                                    Sign In
                                 </button>
                             </div>
                         </form>
 
                     </div>
                     <div className='flex justify-center'>
-                        <h1 className='font-mono'> New TO Job Portal? <Link to='/login' className='underline text-[#9660ea]'>Sign Up Now</Link> </h1>
+                        <h1 className='font-mono'> New TO Job Portal? <Link to='register' className='underline text-[#9660ea]'>Sign Up Now</Link> </h1>
                     </div>
                 </div>
             </div>

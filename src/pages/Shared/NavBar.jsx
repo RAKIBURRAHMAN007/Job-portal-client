@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../context/AuthContext/AuthContext';
 
 const NavBar = () => {
+    const { user, signOutUser } = useContext(AuthContext);
     const links = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/learning'>Start-Learning</Link></li>
         <li><Link to='/tutorials'>Tutorials</Link></li>
         <li><Link to='/aboutUs'>About-Us</Link></li>
-   
+
 
     </>
     return (
 
-        <div className="navbar">
+        <div className="navbar sticky z-10 top-0 bg-white bg-opacity-45 backdrop-blur-xl ">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost text-[#9660ea] lg:hidden">
@@ -37,7 +39,11 @@ const NavBar = () => {
                         }
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-base md:text-2xl text-black">JOB <span className='text-red-500'>PORTAL</span></a>
+                <a className="btn btn-ghost text-base md:text-2xl text-black font-bold tracking-wide relative group">
+                    JOB
+                    <i><span className="text-red-500 font-extrabold font-portal">PORTAL</span></i>
+                    <div className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-red-500 to-black transition-all duration-300 group-hover:w-full"></div>
+                </a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 text-xl ">
@@ -46,10 +52,16 @@ const NavBar = () => {
                     }
                 </ul>
             </div>
-            
+
             <div className='navbar-end gap-1'>
-                <Link to={`signin`} className="btn">Sign In</Link>
-                <Link to={'register'} className="btn">Register</Link>
+                <>
+                    {
+                        user ? <> <button onClick={signOutUser} className='btn'>Sign Out</button> </> : <>  <Link to={`signin`} className="btn">Sign In</Link>
+                            <Link to={'register'} className="btn">Register</Link></>
+
+                    }
+                </>
+
 
             </div>
 

@@ -1,5 +1,6 @@
 import { p } from 'framer-motion/client';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HotJobsCard = ({ job }) => {
     const {
@@ -52,7 +53,7 @@ const HotJobsCard = ({ job }) => {
                 }</div>
                 <div className="card-actions justify-end mt-3">
                     <p className='text-[14px] font-bold'>Salary: {salaryRange.min}-{salaryRange.max} {salaryRange.currency}</p>
-                    <button className='btn btn-primary hover:bg-green-700'>Apply</button>
+                    <Link to={`/jobs/${_id}`}><button className='btn btn-primary hover:bg-green-700'>Details</button></Link>
 
                 </div>
             </div>
